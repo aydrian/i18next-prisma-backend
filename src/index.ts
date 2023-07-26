@@ -37,10 +37,6 @@ class Backend implements BackendModule<BackendOptions> {
     backendOptions: BackendOptions,
     _i18nextOptions: InitOptions
   ) {
-    console.log("i18next Prisma: init", {
-      backendOptions: backendOptions ? Object.keys(backendOptions) : {}
-    });
-
     this.client = backendOptions?.client;
   }
 
