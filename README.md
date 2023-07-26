@@ -1,5 +1,9 @@
 # i18next Prisma backend plugin
 
+[![npm](https://badgen.net/npm/v/i18next-prisma-backend?color=red)](https://www.npmjs.com/package/i18next-prisma-backend)
+[![license](https://badgen.net/github/license/aydrian/i18next-prisma-backend?color=green)](https://github.com/aydrian/i18next-prisma-backend/blob/master/LICENSE)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
+
 A backend plugin for [i18next](https://www.i18next.com/) that supports using [Prisma](https://www.prisma.io/) to load resources from the data source specified in the `schema.prisma` configuration file.
 
 ## Getting Started
