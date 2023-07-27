@@ -12,10 +12,12 @@
     "skipLibCheck": true,
     "rootDir": "src",
     "emitDeclarationOnly": true,
-    "strictPropertyInitialization": false
+    "strictPropertyInitialization": false,
+    "baseUrl": ".",
+    "paths": { "~/*": ["./src/*"], "tests/*": ["./tests/*"] }
   },
   "include": [
     "src/**/*",
-    "lib/index.d.ts" // declaration file path
+    "distinguishing/index.d.ts" // declaration file path
   ]
 }
