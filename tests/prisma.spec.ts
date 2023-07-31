@@ -17,7 +17,6 @@ describe("prisma backend", () => {
   describe("#read", () => {
     test("should read data", () => {
       backend.read("en", "test", (err, data) => {
-        console.log({ err, data });
         expect(err).toBeFalsy();
         expect(data).toEqual({
           key: "passing"
@@ -43,7 +42,7 @@ describe("prisma backend", () => {
   });
 
   describe("#create", () => {
-    test("should throw Not Implemented Yet error", () => {
+    test("should return Not Implemented Yet error", () => {
       backend.create(["es"], "test", "key", "hola", (err) => {
         expect(err).toBeInstanceOf(Error);
         expect((err as Error).message).toBe("Not Implemented Yet");
