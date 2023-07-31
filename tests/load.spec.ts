@@ -16,7 +16,7 @@ describe("i18next Prisma Backend basic load", () => {
   });
 
   test("should load data", () => {
-    connector.load(["en"], ["common"], (err) => {
+    connector.load(["en"], ["test"], (err) => {
       expect(err).toBe(null);
       expect(connector.store.getResourceBundle("en", "test")).to.eq({
         key: "passing"
