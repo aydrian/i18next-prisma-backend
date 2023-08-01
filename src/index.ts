@@ -12,7 +12,19 @@ export type BackendOptions = {
   client?: PrismaClient;
 };
 
-class Backend implements BackendModule<BackendOptions> {
+// Provided interface doesn't include a callback for create
+interface FixedBackendModule<TOptions = object>
+  extends Omit<BackendModule<TOptions>, "create"> {
+  create?(
+    languages: readonly string[],
+    namespace: string,
+    key: string,
+    fallbackValue: string,
+    callback: ReadCallback
+  ): void;
+}
+
+class Backend implements FixedBackendModule<BackendOptions> {
   static type: ModuleType = "backend";
   type: "backend";
 
@@ -48,7 +60,7 @@ class Backend implements BackendModule<BackendOptions> {
       });
   }
 
-  async readTranslations(language: string, namespace: string) {
+  private async readTranslations(language: string, namespace: string) {
     const client = this.getClient();
     const result = await client.i18n.findMany({
       select: { translation: true, key: true },
@@ -66,20 +78,21 @@ class Backend implements BackendModule<BackendOptions> {
   readMulti(
     _languages: readonly string[],
     _namespaces: readonly string[],
-    _callback: MultiReadCallback
+    callback: MultiReadCallback
   ) {
     /* return multiple resources - useful eg. for bundling loading in one xhr request */
-    throw new Error("Not Implemented Yet");
+    return callback(new Error("Not Implemented Yet"), null);
   }
 
   create(
     _languages: readonly string[],
     _namespace: string,
     _key: string,
-    _fallbackValue: string
+    _fallbackValue: string,
+    callback: ReadCallback
   ) {
     /* save the missing translation */
-    throw new Error("Not Implemented Yet");
+    return callback(new Error("Not Implemented Yet"), null);
   }
 }
 

@@ -1,8 +1,15 @@
 node_modules
-lib
-dist
 .DS_Store
+
+/coverage
+/dist
+
+/prisma/data.db
+/prisma/data.db-journal
+
 npm-debug.log
 yarn-error.log
 yarn-debug.log
+
+# Keep environment variables out of version control
 .env
